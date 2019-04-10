@@ -163,11 +163,11 @@ include_once("../../model/Category.php");
                   </tr>
                   <tr>
                     <td>値段</td>
-                    <td><?php echo $result_product->price ?></td>
+                    <td><?php echo $result_product->price?></td>
                   </tr>
                   <tr>
                     <td>写真</td>
-                    <td><?php echo $result_product->picture ?></td>
+                    <td><img src="<?php echo $result_product->picture;?>"style="width:80%;"></td>
                   </tr>
                   <tr>
                     <td>説明</td>
