@@ -2,7 +2,7 @@
 include_once("Db.php");
 
 class Category {
-  public $not_id;
+  public $not_id_1;
   public $name;
   public $picture;
   public $rank;
