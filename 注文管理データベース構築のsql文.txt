@@ -1,0 +1,66 @@
+CREATE DATABASE order_system COLLATE utf8_general_ci;
+
+CREATE TABLE categories(
+    id INT UNSIGNED AUTO_INCREMENT,
+    name TEXT NOT NULL,
+    rank INT NOT NULL,
+    picture TEXT NOT NULL,
+    deleted_at TIMESTAMP NULL,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE products(
+    id INT UNSIGNED AUTO_INCREMENT,
+    category_id INT UNSIGNED NOT NULL,
+    name TEXT NOT NULL,
+    price INT NOT NULL,
+    picture TEXT NOT NULL,
+    instruction TEXT NOT NULL,
+    deleted_at TIMESTAMP NULL,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL,
+	PRIMARY KEY(id),
+    FOREIGN KEY(category_id) REFERENCES categories(id) 
+);
+
+CREATE TABLE tables(
+    id INT UNSIGNED AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    deleted_at TIMESTAMP NULL,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL,
+	PRIMARY KEY(id),
+    UNIQUE (name)
+);
+
+CREATE TABLE orders(
+    id INT UNSIGNED AUTO_INCREMENT,
+    table_id INT UNSIGNED NOT NULL,
+    code VARCHAR(10) NOT NULL,
+    status INT DEFAULT'1' NOT NULL COMMENT'1.ORDERED 2.MADE 3.PAID',
+    ordered_time DATETIME NULL,
+    made_time DATETIME NULL,
+    paid_time DATETIME NULL,
+    deleted_at TIMESTAMP NULL,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL,
+	PRIMARY KEY(id),
+    FOREIGN KEY(table_id) REFERENCES tables(id)
+);
+
+CREATE TABLE order_details(
+    id INT UNSIGNED AUTO_INCREMENT,
+    product_id INT UNSIGNED NOT NULL,
+    order_id INT UNSIGNED NOT NULL,
+    price INT NOT NULL,
+    number INT DEFAULT'1' NOT NULL,
+    finish_flg INT DEFAULT'1' NOT NULL COMMENT'1.UNFINISHED 2.FINISHED',
+    deleted_at TIMESTAMP NULL,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL,
+	PRIMARY KEY(id),
+    FOREIGN KEY(product_id) REFERENCES products(id),
+    FOREIGN KEY(order_id) REFERENCES orders(id)   
+);

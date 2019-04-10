@@ -128,7 +128,7 @@
 
 								</div>
 								<div  class="form-group">
-								<form action="post_add.php" method="POST" >
+								<form action="post_add.php" method="POST" enctype="multipart/form-data">
 									料理名:<input class="form-control form-control-lg" type = "text" name = "name"><br>
 									値　段:<input class="form-control form-control-lg" type = "text" name = "price"><br>
 									カテゴリー:<input class="form-control form-control-lg" type = "text" name = "category_id"><br>

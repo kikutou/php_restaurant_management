@@ -2,6 +2,7 @@
 include_once("Db.php");
 
 class Category {
+
   public $id;
   public $name;
   public $picture;
@@ -43,7 +44,7 @@ class Category {
   {
     $db = new Db();
     $conn = $db->connect_db();
-    $sth = $conn->query("SELECT * FROM Categories WHERE deleted_at IS NULL");
+    $sth = $conn->query("SELECT * FROM Categories WHERE deleted_at IS NULL ORDER BY rank");
     $sth->setFetchMode(PDO::FETCH_CLASS, 'Category');
     $result = $sth->fetchAll();
     return $result;
