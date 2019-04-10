@@ -5,6 +5,7 @@ include_once("../../model/Table.php");
 <!doctype html>
 <head>
 	<title>注文管理</title>
+	
 	<style>
 .button {
   display: inline-block;
