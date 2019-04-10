@@ -71,7 +71,7 @@ include_once("../../model/Product.php");
 
 <?php
 //edit_function
-$result_product = Product::find($_GET["id"]);
+$product = Product::find($_GET["id"]);
 ?>
 
 <body>
@@ -134,13 +134,14 @@ $result_product = Product::find($_GET["id"]);
 								</div>
 
 								<div  class="form-group">
-								<form action="post_edit.php" method="POST" >
-									料理名:<input class="form-control form-control-lg" type = "text" name = "name" value="<?php echo $result_product->name; ?>"><br>
-									値　段:<input class="form-control form-control-lg" type = "text" name = "price" value="<?php echo $result_product->price; ?>"><br>
-									カテゴリー:<input class="form-control form-control-lg" type = "text" name = "category_id" value="<?php echo $result_product->category_id; ?>"><br>
-									写　真:<img width="100" height="100" src="assets/img/tennpura.jpg" />
+								<form action="post_edit.php" method="POST" enctype="multipart/form-data">
+									Id:<input class="form-control form-control-lg" type = "text" name = "name" value="<?php echo $product->id; ?>"><br>
+									料理名:<input class="form-control form-control-lg" type = "text" name = "name" value="<?php echo $product->name; ?>"><br>
+									値　段:<input class="form-control form-control-lg" type = "text" name = "price" value="<?php echo $product->price; ?>"><br>
+									カテゴリー:<input class="form-control form-control-lg" type = "text" name = "category_id" value="<?php echo $product->category_id; ?>"><br>
+									写　真:<img src="<?php echo $product->picture; ?>"style="width:80%;">
 									<input class="form-control form-control-lg" type = "file" name = "picture"><br>
-									説　明:<textarea name="instruction" rows="4" cols="40"><?php echo $result_product->instruction; ?></textarea><br>
+									説　明:<textarea name="instruction" rows="4" cols="40"><?php echo $product->instruction; ?></textarea><br>
 									<input class="form-control" type = "submit" value = "編集する"><br />
 								<form>
 
