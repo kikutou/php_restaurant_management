@@ -2,7 +2,6 @@
 include_once("Db.php");
 
 class Category {
-  // this is a test
   public $id;
   public $name;
   public $picture;
