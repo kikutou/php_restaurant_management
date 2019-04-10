@@ -43,6 +43,7 @@ if ((($_FILES["picture"]["type"] == "image/gif")
     {
 
       // 如果 upload 目录不存在该文件则将文件上传到 upload 目录下
+      //设置乱码让同样图片可以无限上传
       $picture_name = substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1, 10);
       $picture_name = $picture_name .".". $extension;
         // 判断当期目录下的 upload 目录是否存在该文件
