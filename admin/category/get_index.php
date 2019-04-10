@@ -113,10 +113,6 @@
 </head>
 
 <body>
-	<?php
-//index_function
-$result = Category::get();
-?>
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
@@ -135,7 +131,7 @@ $result = Category::get();
 					</div>
 				</form>
 				<div class="navbar-btn navbar-btn-right">
-					<a class="btn btn-success update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
+					<a class="btn btn-success update-pro" href="get_index.php/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
 				</div>
 			</div>
 		</nav>
@@ -184,7 +180,10 @@ $result = Category::get();
 											<th>削除</th>
 										</tr>
 									</thead>
-
+									<?php
+										//index_function
+										$result = Category::get();
+									?>
 									<?php foreach($result as $record) {
 												echo "<tbody>";
 												echo "<tr>";
@@ -213,7 +212,7 @@ $result = Category::get();
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">created by maggie</a>. 2019.4.1.</p>
+				<p class="copyright">&copy; 2017 <a href="get_index.php" target="_blank">created by maggie</a>. 2019.4.1.</p>
 			</div>
 		</footer>
 	</div>
