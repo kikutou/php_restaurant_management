@@ -76,7 +76,6 @@
 	}
 	?>
 
-
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
