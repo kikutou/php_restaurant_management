@@ -24,7 +24,7 @@ if(count($error_messages) > 0) {
 // 允许上传的图片后缀
 $allowedExts = array("gif", "jpeg", "jpg", "png");
 $temp = explode(".", $_FILES["picture"]["name"]);
-$extension = end($temp);     // 获取文件后缀
+$extension = end($temp);    // 获取文件后缀
 if ((($_FILES["picture"]["type"] == "image/gif")
 || ($_FILES["picture"]["type"] == "image/jpeg")
 || ($_FILES["picture"]["type"] == "image/jpg")
