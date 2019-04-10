@@ -1,0 +1,49 @@
+INSERT INTO tables (name)
+VALUES ("apple");
+INSERT INTO tables (name)
+VALUES ("melon");
+INSERT INTO tables (name)
+VALUES ("coconut");
+INSERT INTO tables (name)
+VALUES ("peach");
+INSERT INTO tables (name)
+VALUES ("banana");
+INSERT INTO tables (name)
+VALUES ("papaya");
+INSERT INTO `categories`(`name`, `rank`, `picture`) VALUES ("和食","3","ピクチャー");
+INSERT INTO `categories`(`name`, `rank`, `picture`) VALUES ("フランス料理","3","ピクチャー");
+INSERT INTO `categories`(`name`, `rank`, `picture`) VALUES ("インド料理","1","ピクチャー");
+INSERT INTO `categories`(`name`, `rank`, `picture`) VALUES ("タイ料理","2","ピクチャー");
+INSERT INTO `categories`(`name`, `rank`, `picture`) VALUES ("中華料理","2","ピクチャー");
+INSERT INTO `products`(`category_id`, `name`, `price`, `picture`, `instruction`) VALUES ("3","バターチキンカレー","700円","ピクチャー","とてもおいしい");
+INSERT INTO `products`(`category_id`, `name`, `price`, `picture`, `instruction`) VALUES ("3","ベジタリアンカレー","500円","ピクチャー","とてもおいしい");
+INSERT INTO `products`(`category_id`, `name`, `price`, `picture`, `instruction`) VALUES ("2","ポテトサラダ","650円","ピクチャー","とてもおいしい");
+INSERT INTO `products`(`category_id`, `name`, `price`, `picture`, `instruction`) VALUES ("2","ポテトフライ","350円","ピクチャー","とてもおいしい");
+INSERT INTO `products`(`category_id`, `name`, `price`, `picture`, `instruction`) VALUES ("1","うに丼","1000円","ピクチャー","とてもおいしい");
+INSERT INTO `products`(`category_id`, `name`, `price`, `picture`, `instruction`) VALUES ("4","シーフードグリーンカレー","1200円","ピクチャー","とてもおいしい");
+INSERT INTO `products`(`category_id`, `name`, `price`, `picture`, `instruction`) VALUES ("4","マンゴーライス","800円","ピクチャー","とてもおいしい");
+INSERT INTO `products`(`category_id`, `name`, `price`, `picture`, `instruction`) VALUES ("5","マーラシャンゴ","2650円","ピクチャー","とてもおいしい");
+INSERT INTO `products`(`category_id`, `name`, `price`, `picture`, `instruction`) VALUES ("5","火鍋","3350円","ピクチャー","とてもおいしい");
+INSERT INTO `products`(`category_id`, `name`, `price`, `picture`, `instruction`) VALUES ("1","サーモン刺身","1000円","ピクチャー","とてもおいしい");
+INSERT INTO `orders`(`table_id`, `code`, `status`) VALUES ("1","ax123","3");
+INSERT INTO `orders`(`table_id`, `code`, `status`) VALUES ("1","ax432","2");
+INSERT INTO `orders`(`table_id`, `code`, `status`) VALUES ("2","ax543","1");
+INSERT INTO `orders`(`table_id`, `code`, `status`) VALUES ("3","ax324","1");
+INSERT INTO `orders`(`table_id`, `code`, `status`) VALUES ("4","ax654","2");
+INSERT INTO `orders`(`table_id`, `code`, `status`) VALUES ("3","ax765","2");
+INSERT INTO `orders`(`table_id`, `code`, `status`) VALUES ("1","ax732","3");
+INSERT INTO `orders`(`table_id`, `code`, `status`) VALUES ("1","ax867","1");
+INSERT INTO `orders`(`table_id`, `code`, `status`) VALUES ("2","ax987","3");
+INSERT INTO `orders`(`table_id`, `code`, `status`) VALUES ("3","ax763","2");
+INSERT INTO `orders`(`table_id`, `code`, `status`) VALUES ("4","ax831","1");
+INSERT INTO `orders`(`table_id`, `code`, `status`) VALUES ("3","ax835","3");
+INSERT INTO `order_details`(`product_id`, `order_id`, `price`, `number`, `finish_flg`) VALUES ("1","1","700","2","2");
+INSERT INTO `order_details`(`product_id`, `order_id`, `price`, `number`, `finish_flg`) VALUES ("2","1","500","1","2");
+INSERT INTO `order_details`(`product_id`, `order_id`, `price`, `number`, `finish_flg`) VALUES ("4","1","350","2","2");
+INSERT INTO `order_details`(`product_id`, `order_id`, `price`, `number`, `finish_flg`) VALUES ("6","2","1200","1","2");
+INSERT INTO `order_details`(`product_id`, `order_id`, `price`, `number`, `finish_flg`) VALUES ("7","2","800","2","2");
+INSERT INTO `order_details`(`product_id`, `order_id`, `price`, `number`, `finish_flg`) VALUES ("5","3","1000","1","1");
+INSERT INTO `order_details`(`product_id`, `order_id`, `price`, `number`, `finish_flg`) VALUES ("3","4","650","2","1");
+INSERT INTO `order_details`(`product_id`, `order_id`, `price`, `number`, `finish_flg`) VALUES ("8","4","2650","1","1");
+INSERT INTO `order_details`(`product_id`, `order_id`, `price`, `number`, `finish_flg`) VALUES ("9","5","3350","1","2");
+INSERT INTO `order_details`(`product_id`, `order_id`, `price`, `number`, `finish_flg`) VALUES ("10","5","1000","2","2")
