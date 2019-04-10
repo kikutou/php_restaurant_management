@@ -3,7 +3,7 @@ include_once("Db.php");
 
 class Order_detail{
 
-public $id_xxx;
+public $id;
 public $product_id;
 public $order_id;
 public $price;
