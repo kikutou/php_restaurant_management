@@ -24,7 +24,7 @@ if(count($error_messages) > 0) {
 // 允许上传的图片后缀
 $allowedExts = array("gif", "jpeg", "jpg", "png");
 $temp = explode(".", $_FILES["picture"]["name"]);
-$extension = end($temp);     // 获取文件后缀名
+$extension = end($temp);    // 获取文件后缀
 if ((($_FILES["picture"]["type"] == "image/gif")
 || ($_FILES["picture"]["type"] == "image/jpeg")
 || ($_FILES["picture"]["type"] == "image/jpg")
@@ -42,18 +42,22 @@ if ((($_FILES["picture"]["type"] == "image/gif")
     else
     {
 
+      // 如果 upload 目录不存在该文件则将文件上传到 upload 目录下
+      //设置乱码让同样图片可以无限上传
+      $picture_name = substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1, 10);
+      $picture_name = $picture_name .".". $extension;
         // 判断当期目录下的 upload 目录是否存在该文件
         // 如果没有 upload 目录，你需要创建它，upload 目录权限为 777
-        if (file_exists("../../asset/admin/img/upload/" . $_FILES["picture"]["name"]))
+        if (file_exists("../../asset/admin/img/upload/" . $picture_name))
         {
-            echo $_FILES["picture"]["name"] . " 文件已经存在。 ";
+            echo $picture_name . " 文件已经存在。 ";
             exit();
         }
         else
         {
-            // 如果 upload 目录不存在该文件则将文件上传到 upload 目录下
-            move_uploaded_file($_FILES["picture"]["tmp_name"], "../../asset/admin/img/upload/" . $_FILES["picture"]["name"]);
-            $picture_path = "../../asset/admin/img/upload/" . $_FILES["picture"]["name"];
+
+            move_uploaded_file($_FILES["picture"]["tmp_name"], "../../asset/admin/img/upload/" . $picture_name);
+            $picture_path = "../../asset/admin/img/upload/" . $picture_name;
         }
     }
 }

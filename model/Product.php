@@ -21,7 +21,6 @@ class Product {
 
     $name = $input_data["name"];
     $price = $input_data["price"];
-    $picture = $input_data["picture"];
     $instruction = $input_data["instruction"];
     $category_id = $input_data["category_id"];
 
@@ -33,10 +32,6 @@ class Product {
       $result[]="値段を入力してください!";
     } elseif (!is_numeric($price)){
       $result[]="値段を正しく記入してください！";
-    }
-
-    if(empty($picture)) {
-      $result[] = "リンク先を入力してください。";
     }
 
     if(empty($instruction)) {
@@ -75,22 +70,22 @@ class Product {
     return $result;
   }
 
-  //delete_function
+//delete function
   public function delete()
   {
-    $db = new Db();
-    $conn = $db->connect_db();
-    // SQL作成
-    $sql = "DELETE FROM products WHERE id=\"$this->id\"";
-
+  	$db = new Db();
+  	$conn = $db->connect_db();
+  	// SQL文組み立て
+  	$sql = "UPDATE products SET deleted_at=:deleted_at WHERE id=:id";
+    // SQL ステートメントを準備
     $stmt = $conn->prepare($sql);
 
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+  	$stmt->bindParam(':deleted_at', $this->deleted_at, PDO::PARAM_STR);
 
     $stmt->execute();
 
     $stmt = null;
-
   }
 
   //統合と判断(add+eddit)
@@ -110,18 +105,19 @@ class Product {
     $db = new Db();
     $conn = $db->connect_db();
     // SQL文組み立て
-    $sql = "INSERT INTO users
-            (name, category_id, price, picture, instruction, created_at)
+    $sth = "INSERT INTO products
+            (name,category_id,price,picture,instruction,created_at,updated_at)
             VALUES
-            (:name, :category_id, :price, :picture, :instruction, :created_at, :created_at)";
+            (:name,:category_id,:price,:picture,:instruction,:created_at,:updated_at)";
     // SQL ステートメントを準備
-    $stmt = $conn->prepare($sql);
+    $stmt = $conn->prepare($sth);
 
     $stmt->bindParam(':name', $this->name, PDO::PARAM_STR);
     $stmt->bindParam(':category_id', $this->category_id, PDO::PARAM_INT);
     $stmt->bindParam(':price', $this->price, PDO::PARAM_INT);
     $stmt->bindParam(':picture', $this->picture, PDO::PARAM_STR);
     $stmt->bindParam(':instruction', $this->instruction, PDO::PARAM_STR);
+    $stmt->bindParam(':created_at', $this->created_at, PDO::PARAM_STR);
     $stmt->bindParam(':updated_at', $this->updated_at, PDO::PARAM_STR);
 
     $stmt->execute();
@@ -137,7 +133,7 @@ class Product {
     $db = new Db();
     $conn = $db->connect_db();
     // SQL文組み立て
-    $sql = "UPDATE users SET name =:name,
+    $sth = "UPDATE products SET name =:name,
                             category_id =:category_id,
                             price =:price,
                             picture =:picture,
@@ -146,7 +142,7 @@ class Product {
                             WHERE id =:id";
 
     // SQL ステートメントを準備
-    $stmt = $conn->prepare($sql);
+    $stmt = $conn->prepare($sth);
 
     $stmt->bindParam(':name', $this->name, PDO::PARAM_STR);
     $stmt->bindParam(':category_id', $this->category_id, PDO::PARAM_INT);
