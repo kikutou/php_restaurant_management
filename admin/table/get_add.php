@@ -2,10 +2,12 @@
 <html lang="en">
 
 <head>
-	<title>テーブル管理</title>
+	<title>テーブル増加</title>
 	<?php
 	include_once("../../model/Table.php");
-	$result = Table::get();
+
+	$result = Table::find($_GET["id"]);
+
 	?>
 	<style>
 .button {
@@ -118,30 +120,42 @@
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
-					<h3 class="page-title">テーブル管理</h3>
+					<h3 class="page-title">テーブル増加</h3>
 					<div class="row">
 						<div class="col-md-12">
 							<!-- PANEL HEADLINE -->
 							<div class="panel panel-headline">
 								<table class="table table-hover" align="middle" >
 
-									<?php foreach($result as $record){?>
+
 									<tbody>
 										<tr>
-											<td><?php echo $record->id; ?></td>
+
+											<tr>
+													<td><form action="post_add.php" method="post">
+
+													名前　　：<input type="text" name="name">
+													         <input type="submit" value="増加" class="button">
+												</form></td>
+                      </tr>
+
+
+
+
+											<!-- <td><?php echo $record->id; ?></td>
 											<td><?php echo $record->name;?></td>
 											<td><?php echo $record->created_at; ?></td>
 											<td><?php echo $record->updated_at; ?></td>
 											<td><a href="get_detail.php?id=<?php echo $record->id;?>" class="button">詳細</a></td>
 											<td><a href="get_edit.php?id=<?php echo $record->id;?>" class="button">編集</a></td>
-											<td><a href="get_delete.php?id=<?php echo $record->id; ?>" class="button">削除</a></td>
+											<td><a href="get_delete.php?id=<?php echo $record->id; ?>" class="button">削除</a></td> -->
 											<!-- <td><a href="category_detail.html" class="button">詳細</a></td>
 											<td><a href="category_edit.html" class="button">編集</a></td>
 											<td><a href="category_delete.html" class="button">削除</a></td> -->
 										</tr>
 
 									</tbody>
-									<?php } ?>
+
 
 
 								</table>
@@ -162,7 +176,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-5">
-			<a  href="category_add.html" class="button">追加</a>
+			<a href="get_indext.php" class="button">戻る</a>
 		</div>
 	</div>
 

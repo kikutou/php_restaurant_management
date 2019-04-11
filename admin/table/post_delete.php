@@ -2,16 +2,15 @@
 <html lang="en">
 
 <head>
-	<title>テーブル詳細</title>
+	<title>削除成功</title>
 	<?php
 	include_once("../../model/Table.php");
-	 $table = new Table();
-	 $table->id = $_POST["id"];
-	 $table->deleted_at = date("Y-m-d H:i:s");
+	 $table_number = new Table();
+	 $table_number->id = $_POST["id"];
+	 $table_number->deleted_at = date("Y-m-d H:i:s");
 
-	 $table->delete();
+	 $table_number->delete();
 
-	 echo "削除成功";
 	?>
 	<style>
 .button {
@@ -124,25 +123,25 @@
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
-					<h3 class="page-title">削除</h3>
+					<h3 class="page-title"></h3>
 					<div class="row">
 						<div class="col-md-12">
 							<!-- PANEL HEADLINE -->
 							<div class="panel panel-headline">
-								<!-- <table class="table table-hover" align="middle" >
+								<table class="table table-hover" align="middle" >
 
 
 									<tbody>
 										<tr>
 
 
-										  	<tr>
+										  	<!-- <tr>
 										  	<td><?php echo $result->id;?> </td>
 										  	<td><?php echo $result->name;?> </td>
 									  		<td><?php echo $result->created_at;?> </td>
-									  		<td><?php echo $result->updated_at;?> </td>
-
-												<td><a href="get_indextable.php" class="button">戻る</a></td>
+									  		<td><?php echo $result->updated_at;?> </td> -->
+												<td>削除成功</td>
+												<td><a href="get_index.php" class="button">戻る</a></td>
 									  		</tr>
 
 
@@ -163,7 +162,7 @@
 
 
 
-								</table> -->
+								</table>
 
 
 							<!-- END PANEL HEADLINE -->
@@ -180,9 +179,9 @@
 		</footer>
 	</div>
 	<div class="row">
-		<div class="col-md-4 col-md-offset-5">
+		<!-- <div class="col-md-4 col-md-offset-5">
 			<a  href="category_add.html" class="button">追加</a>
-		</div>
+		</div> -->
 	</div>
 
 	<!-- END WRAPPER -->

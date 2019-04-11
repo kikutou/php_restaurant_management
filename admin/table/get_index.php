@@ -2,22 +2,10 @@
 <html lang="en">
 
 <head>
-	<title>テーブル詳細</title>
+	<title>テーブル管理</title>
 	<?php
 	include_once("../../model/Table.php");
-	// $user = new Table();
-	// $user->id = $_GET["id"];
-	// $result =$user->find();
-	$result = Table::find($_GET["id"]);
-	if($result == null) {
-	  echo "該当レコードが存在しない。";
-	  exit();
-	}
-	  // if(count($result) != 1){
-	  //    echo "This user can not be found";
-	  //  }else{
-	  //    $person = $result[0];
-	  //  }
+	$result = Table::get();
 	?>
 	<style>
 .button {
@@ -136,37 +124,27 @@
 							<!-- PANEL HEADLINE -->
 							<div class="panel panel-headline">
 								<table class="table table-hover" align="middle" >
-
-
+                  <th>id</th>
+									<th>name</th>
+									<th>作成時間</th>
+									<th>更新時間</th>
+									<?php foreach($result as $record){?>
 									<tbody>
 										<tr>
-
-
-										  	<tr>
-										  	<td><?php echo $result->id;?> </td>
-										  	<td><?php echo $result->name;?> </td>
-									  		<td><?php echo $result->created_at;?> </td>
-									  		<td><?php echo $result->updated_at;?> </td>
-
-												<td><a href="get_index.php" class="button">戻る</a></td>
-									  		</tr>
-
-
-
-											<!-- <td><?php echo $record->id; ?></td>
+											<td><?php echo $record->id; ?></td>
 											<td><?php echo $record->name;?></td>
 											<td><?php echo $record->created_at; ?></td>
 											<td><?php echo $record->updated_at; ?></td>
 											<td><a href="get_detail.php?id=<?php echo $record->id;?>" class="button">詳細</a></td>
 											<td><a href="get_edit.php?id=<?php echo $record->id;?>" class="button">編集</a></td>
-											<td><a href="get_delete.php?id=<?php echo $record->id; ?>" class="button">削除</a></td> -->
+											<td><a href="get_delete.php?id=<?php echo $record->id; ?>" class="button">削除</a></td>
 											<!-- <td><a href="category_detail.html" class="button">詳細</a></td>
 											<td><a href="category_edit.html" class="button">編集</a></td>
 											<td><a href="category_delete.html" class="button">削除</a></td> -->
 										</tr>
 
 									</tbody>
-
+									<?php } ?>
 
 
 								</table>
@@ -187,7 +165,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-5">
-			<a  href="category_add.html" class="button">追加</a>
+			<a  href="get_add.php" class="button">追加</a>
 		</div>
 	</div>
 

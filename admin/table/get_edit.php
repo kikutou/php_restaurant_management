@@ -2,22 +2,12 @@
 <html lang="en">
 
 <head>
-	<title>テーブル詳細</title>
+	<title>テーブル編集</title>
 	<?php
 	include_once("../../model/Table.php");
-	// $user = new Table();
-	// $user->id = $_GET["id"];
-	// $result =$user->find();
+
 	$result = Table::find($_GET["id"]);
-	if($result == null) {
-	  echo "該当レコードが存在しない。";
-	  exit();
-	}
-	  // if(count($result) != 1){
-	  //    echo "This user can not be found";
-	  //  }else{
-	  //    $person = $result[0];
-	  //  }
+
 	?>
 	<style>
 .button {
@@ -130,7 +120,7 @@
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
-					<h3 class="page-title">テーブル管理</h3>
+					<h3 class="page-title">テーブル名編集</h3>
 					<div class="row">
 						<div class="col-md-12">
 							<!-- PANEL HEADLINE -->
@@ -141,15 +131,18 @@
 									<tbody>
 										<tr>
 
+											<tr>
 
-										  	<tr>
-										  	<td><?php echo $result->id;?> </td>
-										  	<td><?php echo $result->name;?> </td>
-									  		<td><?php echo $result->created_at;?> </td>
-									  		<td><?php echo $result->updated_at;?> </td>
+												<td>
+													 <form action="post_edit.php" method="post">
+														 <input type="hidden" name="id" value="<?php echo $result->id; ?>">
+														 <input type="text" name="name" value="<?php echo $result->name;?>">
+														 <input type="submit" value="編集" class="button">
+													</form></td>
 
-												<td><a href="get_index.php" class="button">戻る</a></td>
-									  		</tr>
+
+											</tr>
+
 
 
 
@@ -187,7 +180,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-5">
-			<a  href="category_add.html" class="button">追加</a>
+			<a href="get_index.php" class="button">戻る</a>
 		</div>
 	</div>
 
