@@ -2,22 +2,26 @@
 <html lang="en">
 
 <head>
-	<title>テーブル詳細</title>
+	<title>テーブル増加</title>
 	<?php
 	include_once("../../model/Table.php");
-	// $user = new Table();
-	// $user->id = $_GET["id"];
-	// $result =$user->find();
-	$result = Table::find($_GET["id"]);
-	if($result == null) {
-	  echo "該当レコードが存在しない。";
+	$error_messages =Table::validate($_POST);
+
+	if(count($error_messages) > 0) {
+	  // エラーメッセージを表示する。
+	  foreach ($error_messages as $message) {
+	    echo $message . "<br />";
+		}
 	  exit();
 	}
-	  // if(count($result) != 1){
-	  //    echo "This user can not be found";
-	  //  }else{
-	  //    $person = $result[0];
-	  //  }
+	$user = new Table();
+	//edit_function
+	$user->name = $_POST["name"];
+	$user->created_at = date("Y-m-d H:i:s");
+	$user->updated_at = date("Y-m-d H:i:s");
+	$result = $user->save();
+
+
 	?>
 	<style>
 .button {
@@ -130,7 +134,7 @@
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
-					<h3 class="page-title">テーブル管理</h3>
+					<h3 class="page-title">テーブル増加</h3>
 					<div class="row">
 						<div class="col-md-12">
 							<!-- PANEL HEADLINE -->
@@ -141,15 +145,11 @@
 									<tbody>
 										<tr>
 
+											<tr>
 
-										  	<tr>
-										  	<td><?php echo $result->id;?> </td>
-										  	<td><?php echo $result->name;?> </td>
-									  		<td><?php echo $result->created_at;?> </td>
-									  		<td><?php echo $result->updated_at;?> </td>
+												<td><?php if($result != true) {echo "増加失敗";} else {echo "増加成功";}?></td>
+											</tr>
 
-												<td><a href="get_index.php" class="button">戻る</a></td>
-									  		</tr>
 
 
 
@@ -187,7 +187,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-5">
-			<a  href="category_add.html" class="button">追加</a>
+			<a href="get_index.php" class="button">戻る</a>
 		</div>
 	</div>
 

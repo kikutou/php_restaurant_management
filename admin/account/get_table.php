@@ -2,66 +2,8 @@
 <html lang="en">
 
 <head>
-	<title>テーブル詳細</title>
-	<?php
-	include_once("../../model/Table.php");
-	// $user = new Table();
-	// $user->id = $_GET["id"];
-	// $result =$user->find();
-	$result = Table::find($_GET["id"]);
-	if($result == null) {
-	  echo "該当レコードが存在しない。";
-	  exit();
-	}
-	  // if(count($result) != 1){
-	  //    echo "This user can not be found";
-	  //  }else{
-	  //    $person = $result[0];
-	  //  }
-	?>
-	<style>
-.button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #FF5997;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 10px;
-  padding: 5px;
-  width: 40px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button span:after {
-  content: '»';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.button:hover span {
-  padding-right: 25px;
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-</style>
+	<title>会計テーブル検索</title>
 	<meta charset="utf-8">
-
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<!-- VENDOR CSS -->
@@ -94,7 +36,7 @@
 				<form class="navbar-form navbar-left">
 					<div class="input-group">
 						<input type="text" value="" class="form-control" placeholder="Search dashboard...">
-						<span class="input-group-btn"><button type="button" class="btn btn-primary">検索</button></span>
+						<span class="input-group-btn" ><button type="button" class="btn btn-primary">検索</button></span>
 					</div>
 				</form>
 				<div class="navbar-btn navbar-btn-right">
@@ -109,8 +51,8 @@
 				<nav>
 					<ul class="nav">
 						<li><a href="index.html" class=""><i class="lnr lnr-home"></i> <span>ホームページ</span></a></li>
-						<li><a href="table_searching.html" class=""><i class="lnr lnr-code"></i> <span>会計テーブル指定</span></a></li>
-						<li><a href="order_index.html" class="active"><i class="lnr lnr-cog"></i> <span>注文管理</span></a></li>
+						<li><a href="table_searching.html" class="active"><i class="lnr lnr-code"></i> <span>会計テーブル検索</span></a></li>
+						<li><a href="order_index.html" class=""><i class="lnr lnr-cog"></i> <span>注文管理</span></a></li>
 						<li>
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>メニュー管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
@@ -127,70 +69,45 @@
 		<!-- END LEFT SIDEBAR -->
 		<!-- MAIN -->
 		<div class="main">
-			<!-- MAIN CONTENT -->
-			<div class="main-content">
-				<div class="container-fluid">
-					<h3 class="page-title">テーブル管理</h3>
-					<div class="row">
-						<div class="col-md-12">
-							<!-- PANEL HEADLINE -->
-							<div class="panel panel-headline">
-								<table class="table table-hover" align="middle" >
+			<!-- WRAPPER -->
+			<div id="wrapper">
+				<div class="vertical-align-wrap">
+					<div class="vertical-align-middle">
+						<div class="auth-box lockscreen clearfix">
+							<div class="content">
+								<h1 class="sr-only">Klorofil - Free Bootstrap dashboard</h1>
+								<div class="logo text-center"><img src="../../asset/admin/img/logo-dark.png" alt="Klorofil Logo"></div>
+								<div class="user text-center">
+									<img src="../../asset/admin/img/user-medium.png" class="img-circle" alt="Avatar">
+									<h2 class="name">テーブル検索コーナー</h2>
+								</div>
+								<form action="post_table.php" method="post">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="テーブル番号入力......" name="id">
+										<span class="input-group-btn"><button type="submit" class="btn btn-primary"><i class="fa fa-arrow-right" ></i></button></span>
 
-
-									<tbody>
-										<tr>
-
-
-										  	<tr>
-										  	<td><?php echo $result->id;?> </td>
-										  	<td><?php echo $result->name;?> </td>
-									  		<td><?php echo $result->created_at;?> </td>
-									  		<td><?php echo $result->updated_at;?> </td>
-
-												<td><a href="get_index.php" class="button">戻る</a></td>
-									  		</tr>
-
-
-
-											<!-- <td><?php echo $record->id; ?></td>
-											<td><?php echo $record->name;?></td>
-											<td><?php echo $record->created_at; ?></td>
-											<td><?php echo $record->updated_at; ?></td>
-											<td><a href="get_detail.php?id=<?php echo $record->id;?>" class="button">詳細</a></td>
-											<td><a href="get_edit.php?id=<?php echo $record->id;?>" class="button">編集</a></td>
-											<td><a href="get_delete.php?id=<?php echo $record->id; ?>" class="button">削除</a></td> -->
-											<!-- <td><a href="category_detail.html" class="button">詳細</a></td>
-											<td><a href="category_edit.html" class="button">編集</a></td>
-											<td><a href="category_delete.html" class="button">削除</a></td> -->
-										</tr>
-
-									</tbody>
-
-
-
-								</table>
-
-
-							<!-- END PANEL HEADLINE -->
+									</div>
+								</form>
+							</div>
 						</div>
-
+					</div>
+				</div>
+			</div>
+			<!-- END WRAPPER -->
+						</div>
+					</div>
+				</div>
+			</div>
 			<!-- END MAIN CONTENT -->
 		</div>
 		<!-- END MAIN -->
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">created by maggie</a>. 2019.4.1.</p>
+				<p class="copyright">&copy; 2019 <a href="https://www.themeineed.com" target="_blank">created by maggie</a>. 2019.4.1.</p>
 			</div>
 		</footer>
 	</div>
-	<div class="row">
-		<div class="col-md-4 col-md-offset-5">
-			<a  href="category_add.html" class="button">追加</a>
-		</div>
-	</div>
-
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
 	<script src="../../asset/admin/vendor/jquery/jquery.min.js"></script>

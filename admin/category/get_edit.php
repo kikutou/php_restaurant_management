@@ -34,7 +34,7 @@
 	transition: all 0.5s;
 	cursor: pointer;
 	margin: 3px;
-	
+
 }
 .button span {
 	cursor: pointer;
@@ -142,7 +142,7 @@
 									<div class="col-md-12">
 										<!-- PANEL HEADLINE -->
 										<div class="panel panel-headline">
-												<form action="post_edit.php" method="POST" >
+												<form action="post_edit.php" method="POST" enctype="multipart/form-data">
 											<table class="table table-hover" align="middle" >
 												<input type="hidden" name="id" value="<?= $person->id ?>"><br>
 
