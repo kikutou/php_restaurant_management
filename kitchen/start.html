@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" href="css/css.css" />
+</head>
+<body>
+	<div hidden>
+		<strong id="second_show">3</strong>
+	</div>
+	<script type="text/javascript">
+	    var timeout = 3;
+	    function showError() {
+	        document.getElementById("second_show").innerHTML = timeout;
+	        timeout--;
+	        if (timeout == 0) {
+	            window.location.href = "get_order.html";
+	        } else {
+	            setTimeout("showError()", 1000);
+	        }
+	    }
+
+	    showError();
+	</script>
+
+	<div class="htmleaf-container">
+		<div class="container">
+		  <section>
+		    <div class="loader loader-1">
+		      <div class="loader-outter"></div>
+		      <div class="loader-inner"></div>
+		    </div>
+		  </section>
+		</div>
+
+	</div>
+</body>
+</html>
