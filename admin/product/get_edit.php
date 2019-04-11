@@ -135,7 +135,7 @@ $product = Product::find($_GET["id"]);
 
 								<div  class="form-group">
 								<form action="post_edit.php" method="POST" enctype="multipart/form-data">
-									Id:<input class="form-control form-control-lg" type = "text" name = "name" value="<?php echo $product->id; ?>"><br>
+									<input class="form-control form-control-lg" type = "text" name = "id" value="<?php echo $product->id; ?>"><br>
 									料理名:<input class="form-control form-control-lg" type = "text" name = "name" value="<?php echo $product->name; ?>"><br>
 									値　段:<input class="form-control form-control-lg" type = "text" name = "price" value="<?php echo $product->price; ?>"><br>
 									カテゴリー:<input class="form-control form-control-lg" type = "text" name = "category_id" value="<?php echo $product->category_id; ?>"><br>

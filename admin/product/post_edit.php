@@ -66,7 +66,7 @@ else
 
 $product = new Product();
 //edit_function
-$product->name = $_POST["id"];
+$product->id = $_POST["id"];
 $product->name = $_POST["name"];
 $product->price = $_POST["price"];
 $product->instruction = $_POST["instruction"];
