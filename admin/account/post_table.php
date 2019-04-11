@@ -107,11 +107,15 @@ include_once("../../model/Table.php");
 
 					<?php
 
-					$table = Table::find($_GET["table_id"]);
+					$table = Table::find($_POST["id"]);
+           if($table == null) {
+ 					        echo "正しいテーブル番号を入力してください";
+ 									echo "<br>";
+ 									echo "<a href=\"get_table.php\""."<button>"."戻る"."</button>"."</a>";
+ 			         	} else {
+					 $orders = $table->get_all_not_paid_orders();
 
-					$orders = $table->get_all_not_paid_orders();
-
-					foreach($orders as $order):
+					 foreach($orders as $order):
 
 					?>
 					<div class="row">
@@ -154,10 +158,9 @@ include_once("../../model/Table.php");
 					<?php endforeach; ?>
 
 					<p style="float:right"> 総金額：<?php echo $table->get_pay_sum(); ?>円</a><br/>
-
 				</div>
 					<a  style="float:center" href="thanks.html" class="button"　>会計</a>
-
+				 <?php } ?>
 			</div>
 			<!-- END MAIN CONTENT -->
 		</div>

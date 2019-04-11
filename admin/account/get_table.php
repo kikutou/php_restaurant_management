@@ -81,9 +81,9 @@
 									<img src="../../asset/admin/img/user-medium.png" class="img-circle" alt="Avatar">
 									<h2 class="name">テーブル検索コーナー</h2>
 								</div>
-								<form action="../../admin/account/table_detail.php" method="get">
+								<form action="post_table.php" method="post">
 									<div class="input-group">
-										<input type="text" class="form-control" placeholder="テーブル番号入力......">
+										<input type="text" class="form-control" placeholder="テーブル番号入力......" name="id">
 										<span class="input-group-btn"><button type="submit" class="btn btn-primary"><i class="fa fa-arrow-right" ></i></button></span>
 
 									</div>
