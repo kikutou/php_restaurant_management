@@ -1,7 +1,6 @@
 <!--functionを導入する-->
 <?php
 include_once("../../model/Product.php");
-include_once("../../model/Category.php");
 
 ?>
 
@@ -83,17 +82,6 @@ include_once("../../model/Category.php");
 
 	?>
 
-	<?php
-	//detail_function
-	$result_category = Category::find($_GET["id"]);
-
-	if($result_category == null) {
-		echo "該当レコードが存在しない。";
-		exit();
-	}
-
-	?>
-
 
 	<!-- WRAPPER -->
 	<div id="wrapper">
@@ -159,7 +147,7 @@ include_once("../../model/Category.php");
                   </tr>
                   <tr>
                     <td>カテゴリ名</td>
-                    <td><?php echo $result_category->name?></td>
+                    <td><?php echo $result_product->category_id?></td>
                   </tr>
                   <tr>
                     <td>値段</td>
