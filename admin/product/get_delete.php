@@ -146,7 +146,7 @@
 								</tr>
 								<tr>
 									<td>写真</td>
-									<td><?php echo $product->picture; ?></td>
+									<td><img src="<?php echo $product->picture; ?>"style="width:80%;"></td>
 								</tr>
 							</table>
 								<div class="form-group">

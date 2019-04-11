@@ -1,5 +1,6 @@
 <?php
-include_once("Db.php");
+date_default_timezone_set("Asia/Tokyo");
+include_once("db.php");
 
 class Order_detail{
 
@@ -127,5 +128,16 @@ public function delete(){
 
   $stmt->execute();
 }
+
+public function find_orderid(){//新しいfunctionを作る
+  $db = new Db();
+  $conn = $db->connect_db();
+  $sql ="SELECT * FROM order_details WHERE order_id=$this->order_id";//order_idを通じて、全ての同じorder_idのorder_detailを探し出す
+  $sth = $conn->query($sql);
+  $sth->setFetchMode(PDO::FETCH_CLASS, 'Order_detail');
+  $result = $sth->fetchAll();
+  return $result;
+}
+
 }
 ?>

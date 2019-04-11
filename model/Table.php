@@ -1,5 +1,6 @@
 <?php
 include_once("Db.php");
+include_once("Order.php");
 
 class Table{
 //クラスのプロパティ。
@@ -87,13 +88,45 @@ class Table{
   }
 
 
-  public function delete(){
+  function delete(){
     $db = new Db();
     $conn = $db->connect_db();
     $sql="UPDATE tables SET
           deleted_at = \"$this->deleted_at\"
           WHERE id = \"$this->id\";";
     $conn->exec($sql);
+  }
+
+  public function get_all_not_paid_orders()
+  {
+
+    $orders = Order::get();
+
+
+    $result = array();
+
+    foreach($orders as $order) {
+      if($order->table_id == $this->id && $order->status != 3) {
+        $result[] = $order;
+      }
+    }
+
+    return $result;
+
+  }
+
+  public function get_pay_sum()
+  {
+    $sum = 0;
+
+    $orders = $this->get_all_not_paid_orders();
+
+    foreach ($orders as $order) {
+
+      $sum = $sum + $order->get_price_sum();
+    }
+
+    return $sum;
   }
 
 }

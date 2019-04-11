@@ -1,6 +1,10 @@
 <?php
-include_once("../../model/db.php");
 include_once("../../model/Order_detail.php");
+include_once("../../model/Order.php");
+include_once("../../model/Product.php");
+include_once("../../model/Table.php");
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -100,48 +104,23 @@ include_once("../../model/Order_detail.php");
 			<div class="main-content">
 				<div class="container-fluid">
 					<h3 class="page-title">注文内容</h3>
+
+					<?php
+
+					$table = Table::find($_GET["table_id"]);
+
+					$orders = $table->get_all_not_paid_orders();
+
+					foreach($orders as $order):
+
+					?>
 					<div class="row">
-						<div class="col-md-12">
-							<!-- BASIC TABLE -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">注文番号：</h3>
-									<h4 class="panel-title">注文状態：</h4>
-								</div>
-								<div class="panel-body">
-									<table class="table" >
-										<thead>
-											<tr>
-												<th>料理の名</th>
-												<th>料理の数</th>
-												<th>単価</th>
-											</tr>
-										</thead>
-										<?php
-										$order_id = new Order_detail();//Order_detailというclassを使用したい
-										$order_id->order_id = 1;//$order_idがpublic変数のorder_idを賦値される(ここはtable_idと繋がる必要がある)
-										$results = $order_id->find_orderid();
-										foreach($results as $result){
-										?>
-										<tbody>
-											<tr>
-												<td><?php echo $result->product_id ?></td>
-												<td><?php echo $result->number ?></td>
-												<td><?php echo $result->price ?></td>
-											</tr>
-										</tbody>
-									<?php } ?>
-									</table>
-								</div>
-							</div>
-							<!-- END BASIC TABLE -->
-						</div>
 						<div class="col-md-12">
 							<!-- TABLE NO PADDING -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title">注文番号：</h3>
-									<h4 class="panel-title">注文状態：</h4>
+									<h3 class="panel-title">注文コード：<?php echo $order->code; ?></h3>
+									<h4 class="panel-title">注文状態：<?php echo $order->get_status_name() ; ?></h4>
 								</div>
 								<div class="panel-body">
 									<table class="table">
@@ -153,31 +132,28 @@ include_once("../../model/Order_detail.php");
 											</tr>
 										</thead>
 										<tbody>
+											<?php
+											$order_details = $order->get_order_details();
+											foreach($order_details as $order_detail):
+
+											 ?>
 											<tr>
-												<td>ハンバーグ</td>
-												<td>1</td>
-												<td>800</td>
+												<td><?php echo Product::find($order_detail->product_id)->name; ?></td>
+												<td><?php echo $order_detail->number; ?></td>
+												<td><?php echo $order_detail->price; ?></td>
 											</tr>
-											<tr>
-												<td>ハンバーグ</td>
-												<td>1</td>
-												<td>800</td>
-											</tr>
-											<tr>
-												<td>ハンバーグ</td>
-												<td>1</td>
-												<td>800</td>
-											</tr>
+										<?php endforeach; ?>
+
 										</tbody>
 									</table>
 								</div>
 							</div>
-
-
 							<!-- END CONDENSED TABLE -->
 						</div>
 					</div>
-					<p style="float:right"> 総金額：9999円</a><br/>
+					<?php endforeach; ?>
+
+					<p style="float:right"> 総金額：<?php echo $table->get_pay_sum(); ?>円</a><br/>
 
 				</div>
 					<a  style="float:center" href="thanks.html" class="button"　>会計</a>
