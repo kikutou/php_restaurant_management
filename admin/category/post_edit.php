@@ -44,7 +44,7 @@ if(empty($_FILES["picture"])){
   {
       if ($_FILES["picture"]["error"] > 0)
       {
-          echo "错误：: " . $_FILES["picture"]["error"] . "<br>";
+          echo "エラー：: " . $_FILES["picture"]["error"] . "<br>";
           exit();
       }
       else
@@ -57,7 +57,7 @@ if(empty($_FILES["picture"])){
           // 如果没有 upload 目录，你需要创建它，upload 目录权限为 777
           if (file_exists("../../asset/admin/img/upload/" . $picture_name))
           {
-              echo $picture_name . " 文件已经存在。 ";
+              echo $picture_name . "当ファイルはもう既に存在しています";
               exit();
           }
           else
@@ -65,7 +65,7 @@ if(empty($_FILES["picture"])){
               move_uploaded_file($_FILES["picture"]["tmp_name"], "../../asset/admin/img/upload/" . $picture_name);
               $picture_path = "../../asset/admin/img/upload/" . $picture_name;
 
-              
+
               $find->picture = $picture_path;
 
 
@@ -76,7 +76,7 @@ if(empty($_FILES["picture"])){
   }
   else
   {
-      echo "非法的文件格式";
+      echo "正しいファイルタイプをアップロードしてください";
       exit();
   }
 }
@@ -87,10 +87,11 @@ if($result != true) {
   echo "変更失敗";
 } else {
   echo "変更成功";
+  echo "<br>";
 }
 
 
  ?>
-<a href='http://127.0.0.1/restaurant/admin/category/get_index.php'>戻る</a></br>
+<a href='http://localhost/php_restaurant_management/admin/category/get_index.php'>戻る</a></br>
 </body>
 </html>

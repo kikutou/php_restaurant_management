@@ -190,9 +190,9 @@
 												echo "<td>" . $record->id . "</td>";
 												echo "<td>" . $record->rank . "</td>";
 												echo "<td>" . $record->name . "</td>";
-												echo "<td>" . "<a href='http://127.0.0.1/restaurant/admin/category/get_detail.php?id=". $record->id . "'"."class='button'".">" . "詳細" . "</a>" . "</td>";
-												echo "<td>" . "<a href='http://127.0.0.1/restaurant/admin/category/get_edit.php?id=". $record->id . "'"."class='plusone'".">" . "編集" . "</a>" . "</td>";
-												echo "<td>" . "<a href='http://127.0.0.1/restaurant/admin/category/get_delete.php?id=". $record->id . "'"."class='plustwo'".">" . "削除" . "</a>" . "</td>";
+												echo "<td>" . "<a href='http://localhost/php_restaurant_management/admin/category/get_detail.php?id=". $record->id . "'"."class='button'".">" . "詳細" . "</a>" . "</td>";
+												echo "<td>" . "<a href='http://localhost/php_restaurant_management/admin/category/get_edit.php?id=". $record->id . "'"."class='plusone'".">" . "編集" . "</a>" . "</td>";
+												echo "<td>" . "<a href='http://localhost/php_restaurant_management/admin/category/get_delete.php?id=". $record->id . "'"."class='plustwo'".">" . "削除" . "</a>" . "</td>";
 												echo "</tr>";
 												echo "</tbody>";
 
@@ -218,7 +218,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-5">
-			<a  href="http://127.0.0.1/restaurant/admin/category/get_add.php" class="bplus">追加</a>
+			<a  href="http://localhost/php_restaurant_management/admin/category/get_add.php" class="bplus">追加</a>
 		</div>
 	</div>
 

@@ -157,7 +157,7 @@
 												<br />
 
 												<input type="submit" class="bplus" value="送信">
-												<input type="button" class="button"  name="test" value="戻る" onClick="location.href='get_index.php'"/>
+												<input type="button" class="button"  name="test" value="戻る" onClick="location.href='http://localhost/php_restaurant_management/admin/category/get_index.php'"/>
 
 												</form>
 											</div>

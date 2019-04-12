@@ -144,7 +144,7 @@
 												作成時間:<?php echo $result->created_at ?><br/>
 												更新時間:<?php echo $result->updated_at ?><br/>
 
-												<input type="button" name="test"  class="button" value="戻る" onClick="location.href='http://127.0.0.1/restaurant/admin/category/get_index.php'"/>
+												<input type="button" name="test"  class="button" value="戻る" onClick="location.href='http://localhost/php_restaurant_management/admin/category/get_index.php'"/>
 			<!-- END WRAPPER -->
 						</div>
 					</div>
