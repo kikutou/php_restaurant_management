@@ -121,6 +121,17 @@ public function get_status_name()
   return "不明";
 }
 
+public function get_order_details(){
+  $order_details = Order_detail::get();
+  $result = array();
+  foreach($order_details as $one_record){
+   if($one_record->order_id == $this->id){
+      $result[] = $one_record;
+		}
+	}
+	return $result;//返回值
+}
+
 public function find($id)
 {
   $result = Order::get();
@@ -141,17 +152,22 @@ private function add()
   $sql = "INSERT INTO orders
           (code, table_id, status, ordered_time, made_time, paid_time, created_at, updated_at)
           VALUES
-          (\"$this->code\",
-           \"$this->table_id\",
-           \"$this->status\",
-           \"$this->ordered_time\",
-           \"$this->made_time\",
-           \"$this->paid_time\",
-           \"$this->created_at\",
-           \"$this->updated_at\")";
-           $conn->exec($sql);
-           return true;
+          (:code, :table_id, :status, :ordered_time, :made_time, :paid_time, :created_at, :updated_at)";
+          $stmt = $conn->prepare($sql);
+          $stmt->bindParam(':code', $this->code, PDO::PARAM_STR);
+          $stmt->bindParam(':table_id', $this->table_id, PDO::PARAM_INT);
+          $stmt->bindParam(':status', $this->status, PDO::PARAM_INT);
+          $stmt->bindParam(':ordered_time', $this->ordered_time, PDO::PARAM_STR);
+          $stmt->bindParam(':made_time', $this->made_time, PDO::PARAM_STR);
+          $stmt->bindParam(':paid_time', $this->paid_time, PDO::PARAM_STR);
+          $stmt->bindParam(':created_at', $this->created_at, PDO::PARAM_STR);
+          $stmt->bindParam(':updated_at', $this->updated_at, PDO::PARAM_STR);
+          $stmt->execute();
+          $stmt = null;
+          return true;
 }
+
+
 
 private function edit()
 {
@@ -186,25 +202,44 @@ public function delete()
   $conn = $db->connect_db();
   $sql="UPDATE orders SET
         deleted_at = \"$this->deleted_at\"
-        WHERE id = \"$this->id\";";
+        WHERE id = \"$this->id\"";
   $conn->exec($sql);
   return true;
 }
 
-
-public function get_order_details()
+public function delete_order_details()
 {
-  $order_details = Order_detail::get();
+  $db = new Db();
+  $conn = $db->connect_db();
+  $sql="UPDATE order_details SET
+        deleted_at = \"$this->deleted_at\"
+        WHERE order_id = \"$this->id\"";
+  $conn->exec($sql);
+  return true;
+}
 
-  $result = array();
-
-  foreach ($order_details as $order_detail) {
-    if($order_detail->order_id == $this->id) {
-      $result[] = $order_detail;
+public function find_unpaid_orders()
+{
+  $orders = Order::get();
+  $unpaid_order = array();
+  foreach($orders as $order){
+    if($order->status!= 3){
+      $unpaid_order[]= $order;
     }
   }
+  return $unpaid_order;
+}
 
-  return $result;
+public function find_not_made_orders()
+{
+  $orders = Order::get();
+  $unpaid_order = array();
+  foreach($orders as $order){
+    if($order->status== 1){
+      $unpaid_order[]= $order;
+    }
+  }
+  return $unpaid_order;
 }
 
 

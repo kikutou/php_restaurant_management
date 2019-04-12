@@ -1,5 +1,4 @@
 <?php
-date_default_timezone_set("Asia/Tokyo");
 include_once("db.php");
 
 class Order_detail{
@@ -129,6 +128,7 @@ public function delete(){
   $stmt->execute();
 }
 
+
 public function find_orderid(){//新しいfunctionを作る
   $db = new Db();
   $conn = $db->connect_db();
@@ -137,6 +137,22 @@ public function find_orderid(){//新しいfunctionを作る
   $sth->setFetchMode(PDO::FETCH_CLASS, 'Order_detail');
   $result = $sth->fetchAll();
   return $result;
+}
+
+public function count_all_products(){
+  $order_details = Order_detail::find_orderid();
+  return count($order_details);
+
+}
+
+public function count_already_made_products(){
+  $db = new Db();
+  $conn = $db->connect_db();
+  $sql ="SELECT * FROM order_details WHERE order_id=$this->order_id AND finish_flg=2";
+  $sth = $conn->query($sql);
+  $sth->setFetchMode(PDO::FETCH_CLASS, 'Order_detail');
+  $result = $sth->fetchAll();
+  return count($result);
 }
 
 }
