@@ -30,7 +30,7 @@ include_once("../model/Category.php");
       <p><a href=""><img src="<?php echo "image/".$category->picture; //写真の前にimage/でファイルが格納されているフォルダを明示?>" width="200" height="200"></a>
                     <br><?php echo $category->name; ?></p>
     </div>
-    
+
     <?php endforeach ?>
     </div>
    </div>
