@@ -82,7 +82,7 @@ include_once("../../model/Table.php");
 							<div class="container-fluid">
 								<h3 class="page-title">注文詳細</h3>
 					<?php $order = Order::find($_GET["id"]);
-								$order_details = $order->find_by_order_id();
+								$order_details = $order->get_order_details();
 					?>
 								<h3 class="page-title">注文コード：<?= $order->code ?></h3>
 								<div class="row">
