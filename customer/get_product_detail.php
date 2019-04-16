@@ -7,7 +7,7 @@ session_start();
 <html>
 <head>
 <meta charset="UTF-8">
-<title><?php $product = find($_GET["id"]);
+<title><?php $product = Product::find($_GET["product_id"]);
              echo $product->name ?>について</title>
 <link rel="stylesheet" type="text/css" href="style.css" charset="utf-8">
 <link href="https://w3g.jp/sample/css/font-family" rel="stylesheet">
@@ -23,9 +23,9 @@ session_start();
   </div>
   <div class="container　 has-border">
         <div  align="center">
-          <a href="get_product_detail.php?id=<?=$product->id ?>">
-            <img src="<?php echo "hello/".$product->picture;?>" width="300" height="300" alt="<?= $product->picture ?>">
-          </a>
+          <!-- <a href="get_product_detail.php?product_id=<?=$product->id ?>"> -->
+            <img src="<?php echo "image/".$product->picture;?>" width="300" height="300" alt="<?= $product->picture ?>">
+          <!-- </a> -->
         </div>
           <h3>カテゴリ名:<?php echo Category::find($product->category_id)->name ?></h3>
           <h3>単価:<?php echo $product->price; ?>円</h3>
@@ -37,13 +37,13 @@ session_start();
        <a href="shopping_cart.php?product_id=<?= $product->id ?>&action=add">カート入れ
        </a>
      </button>
-     <button type="button" class="btn"><a href="get_categories_index.php">戻る</a></button>
+     <button type="button" class="btn"><a href="get_products_index.php?category_id=<?=$product->category_id ?>">戻る</a></button>
    </div>
 
    <div align="center" class="footer">
      <div align="right">
        <a href="shopping_cart.php">
-       <img src="../asset/customer/img/shoppingcart.png" width="100" height="100" alt="shoppingcart">
+       <img src="../asset/customer/img/shoppingcart.png" width="100" height="100" alt="shoppingcart"></a>
      </div>
      <p>&copy;Copyright Japan YaMii group. All rights reserved.</p>
    </div>

@@ -34,14 +34,13 @@ $session_data = Session::fix_data();
 <div class="wrapper">
 <?php
 if($_SESSION == NULL){
-	echo <<<cart
+?>
 	<h1 class="logo">注文カート</h1>
-  <img src="../asset/customer/img/shoppingcart.png" width="50" height="50" alt="">
-	<button><a href="get_categories_index.php">メニューに戻る</a></button>
+  <img src="../asset/customer/img/shoppingcart.png" width="50" height="50">
 	<h3>注文カートに何も入っていません！</h3>
-cart;
+	<button><a href="get_categories_index.php">早速注文しましょう！</a></button>
+<?php
 } else {
-
 ?>
 
  <h1 class="logo">注文カート</h1>
@@ -49,11 +48,11 @@ cart;
   <table class="table table-striped">
     <thead>
  		<tr>
- 			<th>商品</th>
+ 			<th>商品名</th>
  			<th>単価</th>
-			<th>*</th>
+			<th></th>
  			<th>個数</th>
-			<th>=</th>
+			<th></th>
 			<th>値段</th>
       <th>削除</th>
  		</tr>
@@ -98,7 +97,7 @@ cart;
 
   </table>
 
-	<input type="submit" value="計算">
+	<input type="submit" value="精算">
 
 	</form>
   <h4>総金額：<?= $sum ?>円</h4>

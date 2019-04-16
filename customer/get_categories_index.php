@@ -27,12 +27,12 @@ include_once("../model/Category.php");
     ?>
 
     <div class="col-4 text-center has-border">
-      <a href="get_products_index.php?id=<?=$category->id ?>">
-        <img src="<?php echo "hello/".$category->picture;?>" width="200" height="200" alt="<?= $category->picture ?>">
+      <a href="get_products_index.php?category_id=<?=$category->id ?>">
+        <img src="<?php echo "image/".$category->picture;?>" width="200" height="200" alt="<?= $category->picture ?>">
       </a>
       <br>
       <p>
-        <a href="get_products_index.php?id=<?=$category->id ?>">
+        <a href="get_products_index.php?category_id=<?=$category->id ?>">
         <?php echo $category->name; ?>
       </p>
     </div>
