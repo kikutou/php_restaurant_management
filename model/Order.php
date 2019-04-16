@@ -136,9 +136,9 @@ private function add()
           $stmt->bindParam(':updated_at', $this->updated_at, PDO::PARAM_STR);
           $stmt->execute();
 
-          $last_id = $conn->lastInsertId();
+          $this->id = $conn->lastInsertId();
           $stmt = null;
-          return $last_id;
+          return true;
 }
 private function edit()
 {

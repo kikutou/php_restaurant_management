@@ -37,7 +37,9 @@ $order->table_id = $input_data["table_id"];
 $order->ordered_time = $input_data["ordered_time"];
 $order->created_at = date('Y-m-d H:i:s');
 $order->updated_at = date('Y-m-d H:i:s');
-$order_id = $order->save();
+$order->save();
+
+$order_id = $order->id;
 
 session_start();
 $cart = $_SESSION["cart"];
