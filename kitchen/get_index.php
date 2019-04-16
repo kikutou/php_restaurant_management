@@ -2,6 +2,7 @@
 <?php
 include_once("../model/Order.php");
 include_once("../model/Order_detail.php");
+include_once("../model/Table.php");
 ?>
 
 <!DOCTYPE html>
@@ -59,8 +60,8 @@ include_once("../model/Order_detail.php");
 
 				echo "<tr>";
 				echo "<td>" . $order->code . "</td>";
-				echo "<td>" . $order->table_id . "</td>";
-				echo "<td>" . Order_detail::find($order->id)->number . "</td>";
+				echo "<td>" . Table::find($order->table_id)->name . "</td>";
+				echo "<td>" . $order->get_all_finished_product_number() . "/" . $order->get_all_product_number() . "</td>";
 				echo "<td>" . "<a href='get_detail.php?id=" . $order->id . "'>" . "作業" . "</a>" . "</td>";
 				echo "</tr>";
 

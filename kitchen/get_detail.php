@@ -6,6 +6,41 @@ include_once("../model/Product.php");
 include_once("../model/Table.php")
 ?>
 
+
+<?php
+$finish_order_detail_id = isset($_GET["finish_order_detail_id"]) ? $_GET["finish_order_detail_id"] : null;
+
+
+if($finish_order_detail_id) {
+	$order_detail = Order_detail::find($finish_order_detail_id);
+	$order_detail->finish_flg = 2;
+	$order_detail->save();
+}
+
+$order_details = Order_detail::get_by_order_id($_GET["id"]);
+$all_finish = true;
+
+foreach ($order_details as $order_detail) {
+	if($order_detail->finish_flg == 1) {
+		$all_finish = false;
+	}
+}
+
+
+if($all_finish) {
+
+	$order = Order::find($_GET["id"]);
+	$order->status = 2;
+	$order->save();
+	header("Location: get_end.html"); /* Redirect browser */
+  exit();
+}
+
+
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="jp">
 <head>
@@ -64,12 +99,11 @@ include_once("../model/Table.php")
 					 <td><?= Product::find($order_detail->product_id)->name;?></td>
 					 <td><?= $order_detail->number ?></td>
 					 <td>
-						 	<form>
-						 	<?php if($order_detail->finish_flg==1){echo '<input type="submit" value="完了";"/>';}
-						 				elseif($order_detail->finish_flg==2){echo '<input type="hidden" value="料理済み");"/>';}
-						 				elseif($order_detail->finish_flg==3){echo "不明な注文";}
-							?>
-						</form>
+						 <?php if($order_detail->finish_flg == 1): ?>
+						 	<a href="get_detail.php?id=<?= $_GET["id"] ?>&finish_order_detail_id=<?= $order_detail->id ?>">完了</a>
+						<?php else: ?>
+							完了済
+						<?php endif; ?>
 					 </td>
 				 </tr>
 			 <?php endforeach; ?>

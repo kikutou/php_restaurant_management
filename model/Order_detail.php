@@ -11,6 +11,7 @@ public $number;
 public $created_at;
 public $updated_at;
 public $deleted_at;
+public $finish_flg;
 
 public static function get(){
 
@@ -93,6 +94,8 @@ private function add(){//此函數為save函數內部作用判斷，因此不為
 	$stmt->bindParam(':created_at', $this->created_at, PDO::PARAM_STR);
 	$stmt->bindParam(':updated_at', $this->updated_at, PDO::PARAM_STR);
 
+
+
   $stmt->execute();
 }
 
@@ -100,7 +103,7 @@ private function edit(){
 	$db = new Db;
 	$conn = $db->connect_db();
   // SQL文組み立て
-  $sql = "UPDATE order_details SET product_id=:product_id, order_id=:order_id, price=:price, number=:number, updated_at=:updated_at WHERE id=:id";
+  $sql = "UPDATE order_details SET product_id=:product_id,finish_flg=:finish_flg, order_id=:order_id, price=:price, number=:number, updated_at=:updated_at WHERE id=:id";
   // SQL ステートメントを準備
   $stmt = $conn->prepare($sql);
 
@@ -110,6 +113,7 @@ private function edit(){
 	$stmt->bindParam(':price', $this->price, PDO::PARAM_INT);
 	$stmt->bindParam(':number', $this->number, PDO::PARAM_INT);
 	$stmt->bindParam(':updated_at', $this->updated_at, PDO::PARAM_STR);
+  $stmt->bindParam(':finish_flg', $this->finish_flg, PDO::PARAM_INT);
 
   $stmt->execute();
 }
@@ -133,6 +137,18 @@ public function find_orderid(){//新しいfunctionを作る
   $db = new Db();
   $conn = $db->connect_db();
   $sql ="SELECT * FROM order_details WHERE order_id=$this->order_id";//order_idを通じて、全ての同じorder_idのorder_detailを探し出す
+  $sth = $conn->query($sql);
+  $sth->setFetchMode(PDO::FETCH_CLASS, 'Order_detail');
+  $result = $sth->fetchAll();
+  return $result;
+}
+
+
+public static function get_by_order_id($order_id)
+{
+  $db = new Db();
+  $conn = $db->connect_db();
+  $sql ="SELECT * FROM order_details WHERE order_id=$order_id";//order_idを通じて、全ての同じorder_idのorder_detailを探し出す
   $sth = $conn->query($sql);
   $sth->setFetchMode(PDO::FETCH_CLASS, 'Order_detail');
   $result = $sth->fetchAll();
