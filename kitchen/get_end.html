@@ -16,12 +16,30 @@
 	<!--ssMenu CSS-->
     <link rel="stylesheet" href="css/ss-menu.css">
     <link rel="stylesheet" href="css/demo.css">
+    <style>
+    .container{
+        width:1000px;
+        height:200px;
+        position:absolute;
+        left:25%;
+        top:50%;
+        margin: -100px 0 0 -100px;
+    }
+</style>
 </head>
 <body>
-<div class="container">
-<h2>このテーブルの料理が終わりました、お疲れ様でした</h2>
-<a href='get_index.php'><button type="button" class="btn btn-primary">戻る</button></a>
-</di
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><h2><center>このテーブルの料理が終わりました、お疲れ様でした</h2></center></th>
+        </tr>
+        <tr>
+          <td><center><a href='get_index.php'><button type="button" class="btn btn-primary">戻る</button></a></center></td>
+        </tr>
+      </thead>
+    </table>
+  </div>
 
 </body>
 </html>

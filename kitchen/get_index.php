@@ -29,7 +29,7 @@ include_once("../model/Table.php");
 	<nav class="ss-menu ">
 	 <ul>
 	    <li><a href="get_index.php"><i class="fa fa-bar-chart">注文一覧</i></a></li>
-	    <li><a href="start.html"><i class="fa fa-bookmark-o"></i>注文詳細</a></li>
+	    <li><a href="get_index.php"><i class="fa fa-bookmark-o"></i>注文詳細</a></li>
 	 </ul>
 	</nav>
 

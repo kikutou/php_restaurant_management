@@ -100,7 +100,7 @@
 					<ul class="nav">
 						<li><a href="../../kitchen/start.html" class=""><i class="lnr lnr-home"></i> <span>ホームページ</span></a></li>
 						<li><a href="../account/get_table.php" class=""><i class="lnr lnr-code"></i> <span>会計テーブル指定</span></a></li>
-						<li><a href="../order/order_index.php" class=""><i class="lnr lnr-cog"></i> <span>注文管理</span></a></li>
+						<li><a href="../order/get_index.php" class=""><i class="lnr lnr-cog"></i> <span>注文管理</span></a></li>
 						<li>
 							<a href="#subPages" data-toggle="collapse" class="active"><i class="lnr lnr-file-empty"></i> <span>メニュー管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
