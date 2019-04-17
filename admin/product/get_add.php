@@ -73,7 +73,7 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="index.html"><img src="../../asset/admin/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+				<a href="../../kitchen/start.html"><img src="../../asset/admin/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -96,8 +96,8 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="index.html" class=""><i class="lnr lnr-home"></i> <span>ホームページ</span></a></li>
-						<li><a href="../table/get_indexgable.php" class=""><i class="lnr lnr-code"></i> <span>会計テーブル指定</span></a></li>
+						<li><a href="../../kitchen/start.html" class=""><i class="lnr lnr-home"></i> <span>ホームページ</span></a></li>
+						<li><a href="../account/get_table.php" class=""><i class="lnr lnr-code"></i> <span>会計テーブル指定</span></a></li>
 						<li><a href="../order/get_index.php" class=""><i class="lnr lnr-cog"></i> <span>注文管理</span></a></li>
 						<li>
 							<a href="#subPages" data-toggle="collapse" class="active"><i class="lnr lnr-file-empty"></i> <span>メニュー管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>

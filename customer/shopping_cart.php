@@ -3,7 +3,7 @@ include_once("../model/Table.php");
 include_once("../model/Product.php");
 include_once("../model/Session.php");
 
-$action = $_GET["action"];
+$action = isset($_GET["action"]) ? $_GET["action"] : null;
 
 Session::init_session();
 
@@ -105,14 +105,16 @@ if($_SESSION == NULL){
 
 
 
-	<form action="finish.php" method="post">
+	<form action="get_finish.php" method="post">
 
 		テーブル名：<select name="table_id">
 		<?php foreach(Table::get() as $table) :?>
 			 <option value="<?= $table->id ?>"><?= $table->name ?></option>
 		<?php endforeach ?>
 
+<?php if(count($session_data) > 0) : ?>
 		<input type="submit" value="注文確認">
+	<?php endif; ?>
 	 </form>
 <?php } ?>
 

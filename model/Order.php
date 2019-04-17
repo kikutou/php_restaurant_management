@@ -1,5 +1,5 @@
 <?php
-include_once("db.php");
+include_once("Db.php");
 include_once("Order_detail.php");
 date_default_timezone_set("Asia/Tokyo");
 class Order{
@@ -217,6 +217,41 @@ public function find_not_made_orders()
           $randomString .= $characters[rand(0, $charactersLength - 1)];
       }
       return $randomString;
+  }
+
+
+  public function get_all_product_number()
+  {
+    $order_details = Order_detail::get();
+
+    $sum = 0;
+
+    foreach($order_details as $order_detail) {
+      if($order_detail->order_id == $this->id) {
+        $sum += $order_detail->number;
+      }
+
+    }
+
+    return $sum;
+  }
+
+
+
+  public function get_all_finished_product_number()
+  {
+    $order_details = Order_detail::get();
+
+    $sum = 0;
+
+    foreach($order_details as $order_detail) {
+      if($order_detail->finish_flg == 2 && $order_detail->order_id == $this->id) {
+        $sum += $order_detail->number;
+      }
+    }
+
+    return $sum;
+
   }
 }
  ?>

@@ -78,7 +78,11 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
+<<<<<<< HEAD
 				<a href="../category/get_index.php"><img src="../../asset/admin/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+=======
+				<a href="../../kitchen/start.html"><img src="../../asset/admin/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+>>>>>>> dbd750f23c20ebef15a960c860cd6f0de7bb6aef
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -98,7 +102,11 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
+<<<<<<< HEAD
 						<li><a href="../category/get_index.php" class=""><i class="lnr lnr-home"></i> <span>ホームページ</span></a></li>
+=======
+						<li><a href="../../kitchen/start.html" class=""><i class="lnr lnr-home"></i> <span>ホームページ</span></a></li>
+>>>>>>> dbd750f23c20ebef15a960c860cd6f0de7bb6aef
 						<li><a href="../account/get_table.php" class=""><i class="lnr lnr-code"></i> <span>会計テーブル指定</span></a></li>
 						<li><a href="../order/get_index.php" class=""><i class="lnr lnr-cog"></i> <span>注文管理</span></a></li>
 						<li>
@@ -106,7 +114,11 @@
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
 									<li><a href="../category/get_index.php" class="">カテゴリ管理</a></li>
+<<<<<<< HEAD
 									<li><a href="../product/get_index.php" class="">料理管理</a></li>
+=======
+									<li><a href="get_index.php" class="">料理管理</a></li>
+>>>>>>> dbd750f23c20ebef15a960c860cd6f0de7bb6aef
 								</ul>
 							</div>
 						</li>
