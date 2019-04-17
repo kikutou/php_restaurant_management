@@ -8,7 +8,7 @@ include_once("../model/Order_detail.php");
 <head>
 <meta charset="UTF-8">
 <title>注文完了</title>
-<link rel="stylesheet" type="text/css" href="style.css" charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../asset/customer/css/style.css" charset="utf-8">
 <link href="https://w3g.jp/sample/css/font-family" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>

@@ -6,7 +6,7 @@ include_once("../model/Category.php");
 <head>
 <meta charset="UTF-8">
 <title>ヤーミー居酒屋へようこそ</title>
-<link rel="stylesheet" type="text/css" href="style.css" charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../asset/customer/css/style.css" charset="utf-8">
 <link href="https://w3g.jp/sample/css/font-family" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">

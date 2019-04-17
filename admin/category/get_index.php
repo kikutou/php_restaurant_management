@@ -141,15 +141,15 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="index.html" class=""><i class="lnr lnr-home"></i> <span>ホームページ</span></a></li>
-						<li><a href="table_searching.html" class=""><i class="lnr lnr-code"></i> <span>会計テーブル指定</span></a></li>
-						<li><a href="order_index.html" class="active"><i class="lnr lnr-cog"></i> <span>注文管理</span></a></li>
+						<li><a href="get_index.php" class=""><i class="lnr lnr-home"></i> <span>ホームページ</span></a></li>
+						<li><a href="../account/get_table.php" class=""><i class="lnr lnr-code"></i> <span>会計テーブル指定</span></a></li>
+						<li><a href="../order/get_index.php" class="active"><i class="lnr lnr-cog"></i> <span>注文管理</span></a></li>
 						<li>
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>メニュー管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
 									<li><a href="get_index.php" class="">カテゴリ管理</a></li>
-									<li><a href="product_index.html" class="">料理管理</a></li>
+									<li><a href="../product/get_index.php" class="">料理管理</a></li>
 								</ul>
 							</div>
 						</li>

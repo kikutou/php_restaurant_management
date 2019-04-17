@@ -25,7 +25,7 @@ $session_data = Session::fix_data();
 <head>
 	<meta charset="utf-8">
 	<title>注文カート</title>
-  <link rel="stylesheet" type="text/css" href="style.css" charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../asset/customer/css/style.css" charset="utf-8">
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
